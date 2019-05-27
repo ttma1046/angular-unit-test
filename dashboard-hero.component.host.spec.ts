@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardHeroComponent } from './dashboard-hero.component';
 import { Hero } from './hero';
-import { click } from './testing';
+import { click } from './testing/testing';
 
 @Component({
   template: `

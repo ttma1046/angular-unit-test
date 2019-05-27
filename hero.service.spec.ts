@@ -1,5 +1,5 @@
 import { Hero } from "./hero";
-import { asyncData, asyncError } from "./async-observable-helpers";
+import { asyncData, asyncError } from "./testing/async-observable-helpers";
 
 describe('HeroService', () => {
     let heroService: HeroService;
