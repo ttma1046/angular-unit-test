@@ -2,9 +2,9 @@ import {
   async, ComponentFixture, fakeAsync, inject, TestBed, tick
 } from '@angular/core/testing';
 
-import { HeroDetailComponent } from './hero-detail.component';
-import { newEvent } from './testing';
 import { Hero } from './hero';
+import { HeroDetailComponent } from './hero-detail.component';
+import { newEvent } from './testing/testing';
 
 let component: HeroDetailComponent;
 let fixture: ComponentFixture<HeroDetailComponent>;
@@ -45,6 +45,44 @@ describe("when navigate to existing hero", () => {
     // Tell Angular to update the display binding through the title pipe
     fixture.detectChanges();
 
-    expect(nameDisplay.textContent).toBe("Quick Brown  Fox");
+    expect(nameDisplay.textContent).toBe("Quick Brown Fox");
+  });
+});
+
+describe('when navigate to existing hero', () => {
+  let expectedHero: Hero;
+
+  beforeEach(async(() => {
+    expectedHero = firstHero;
+    activatedRoute.setParamMap({ id: expectedHero.id });
+    createComponent();
+  }));
+
+  it('should display that hero\'s name', () => {
+    expect(page.nameDisplay.textContent).toBe(expectedHero.name);
+  });
+});
+
+describe('when navigate to non-existent hero id', () => {
+  beforeEach(async(() => {
+    activatedRoute.setParamMap({ id: 99999 });
+    createComponent();
+  }));
+
+  it('should try to navigate back to hero list', () => {
+    expect(page.gotoListSpy.calls.any()).toBe(true, 'comp.gotoList called');
+    expect(page.navigateSpy.calls.any()).toBe(true, 'router.navigate called');
+  });
+});
+
+describe('when navigate with no hero id', () => {
+  beforeEach(async( createComponent ));
+
+  it('should have hero.id === 0', () => {
+    expect(component.hero.id).toBe(0);
+  });
+
+  it('should display empty hero name', () => {
+    expect(page.nameDisplay.textContent).toBe('');
   });
 });

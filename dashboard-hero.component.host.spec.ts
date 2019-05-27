@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { DashboardHeroComponent } from './dashboard-hero.component';
 import { Hero } from './hero';
+import { click } from './testing';
 
 @Component({
   template: `
@@ -16,6 +20,10 @@ class TestHostComponent {
 }
 
 describe('Description', () => {
+  let fixture: ComponentFixture<TestHostComponent>;
+  let testHost: TestHostComponent;
+  let heroEl: HTMLElement;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [DashboardHeroComponent, TestHostComponent]

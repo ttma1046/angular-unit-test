@@ -45,8 +45,26 @@ describe('DashboardHeroComponent', () => {
     expect(selectedHero).toBe(expectedHero);
   });
 
+  it('should raise selected event when clicked (element.click)', () => {
+    let selectedHero: Hero;
+    comp.selected.subscribe((hero: Hero) => selectedHero = hero);
+
+    heroEl.click();
+    expect(selectedHero).toBe(expectedHero);
+  });
+
+  it('should raise selected event when clicked (click helper)', () => {
+    let selectedHero: Hero;
+    comp.selected.subscribe(hero => selectedHero = hero);
+
+    click(heroDe); // click helper with DebugElement
+    click(heroEl); // click helper with native element
+
+    expect(selectedHero).toBe(expectedHero);
+  });
+
   it('raises the selected event when clicked', () => {
-    const comp = new DashboardHeroComponent();
+    comp = new DashboardHeroComponent();
     const hero: Hero = { id: 42, name: 'Test' };
     comp.hero = hero;
 
