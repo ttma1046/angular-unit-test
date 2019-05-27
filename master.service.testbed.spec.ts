@@ -32,5 +32,5 @@ describe("MasterService", () => {
             .toBe(1, 'service returned stub value');
         expect(valueServiceSpy.getValue.calls.mostRecent().returnValue)
             .toBe(stubValue);
-    })
+    });
 });

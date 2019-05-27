@@ -28,7 +28,7 @@ describe('MasterService without Angular testing support', () => {
     it('#getValue should return stubbed value from a spy', () => {
         // create `getValue` spy on an object representing the ValueService
         const valueServiceSpy = jasmine.createSpyObj('ValueService', ['getValue']);
-        
+
         // set the value to return when the `getValue` spy is called.
         const stubValue = 'stub value';
         valueServiceSpy.getValue.and.returnValue(stubValue);

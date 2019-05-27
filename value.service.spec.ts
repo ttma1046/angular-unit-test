@@ -18,11 +18,11 @@ describe('ValueService', () => {
         }
     )
 
-    it('#getPromiseValue should return value from a promise', 
+    it('#getPromiseValue should return value from a promise',
         (done: DoneFn) => {
             service.getPromiseValue().then(value => {
                 expect(value).toBe('promise value');
                 done();
-            })        
-    })    
+            })
+    })
 })

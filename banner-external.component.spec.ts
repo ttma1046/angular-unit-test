@@ -43,7 +43,7 @@ describe('BannerComponent (with beforeEach)', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [BannerComponent]
+            declarations: [BannerComponent],
         });
         fixture = TestBed.createComponent(BannerComponent);
         component = fixture.componentInstance;
